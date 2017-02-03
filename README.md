@@ -1,4 +1,4 @@
-# textlint-rule-no-mixed-zenkaku-and-hankaku-alphabet
+# textlint-rule-no-mixed-zenkaku-and-hankaku-alphabet [![Build Status](https://travis-ci.org/textlint-ja/textlint-rule-no-mixed-zenkaku-and-hankaku-alphabet.svg?branch=master)](https://travis-ci.org/textlint-ja/textlint-rule-no-mixed-zenkaku-and-hankaku-alphabet)
 
 全角と半角アルファベットを混在をチェックするtextlintルール
 
