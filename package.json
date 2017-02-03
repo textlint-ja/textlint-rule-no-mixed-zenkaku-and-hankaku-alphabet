@@ -10,7 +10,7 @@
     "src/"
   ],
   "name": "textlint-rule-no-mixed-zenkaku-and-hankaku-alphabet",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "全角と半角アルファベットを混在をチェックするtextlintルール",
   "main": "lib/textlint-rule-no-mixed-zenkaku-and-hankaku-alphabet.js",
   "scripts": {
