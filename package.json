@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/textlint-ja/textlint-rule-no-mixed-zenkaku-and-hankaku-alphabet",
   "devDependencies": {
-    "textlint-scripts": "^3.0.0"
+    "textlint-scripts": "^12.6.1"
   },
   "dependencies": {
     "match-index": "^1.0.1",
