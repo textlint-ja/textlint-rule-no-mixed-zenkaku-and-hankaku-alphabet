@@ -1,7 +1,6 @@
 // MIT © 2017 azu
 "use strict";
 const RuleHelper = require("textlint-rule-helper").RuleHelper;
-const matchCaptureGroupAll = require("match-index").matchCaptureGroupAll;
 const moji = require("moji");
 function toHankaku(string) {
     return moji(string).convert('ZE', 'HE').toString();
@@ -16,26 +15,28 @@ const defaultOptions = {
 
 const zenkakuOnly = ({report, RuleError, fixer}) => {
     return function checkZenkaku(node, text) {
-        const matchRegExp = /([a-zA-Z]+)/;
-        matchCaptureGroupAll(text, matchRegExp).forEach(match => {
-            const {index, text} = match;
+        const matchRegExp = /([a-zA-Z]+)/gd;
+        for (const match of text.matchAll(matchRegExp)) {
+            const matchedText = match[1];
+            const [startIndex, endIndex] = match.indices[1];
             report(node, new RuleError("アルファベットは「全角」で表記します。", {
-                index: index,
-                fix: fixer.replaceTextRange([index, index + text.length], toZenakaku(text))
+                index: startIndex,
+                fix: fixer.replaceTextRange([startIndex, endIndex], toZenakaku(matchedText))
             }));
-        });
+        }
     };
 };
 const hankakuOnly = ({report, RuleError, fixer}) => {
     return function checkZenkaku(node, text) {
-        const matchRegExp = /([ａ-ｚＡ-Ｚ]+)/;
-        matchCaptureGroupAll(text, matchRegExp).forEach(match => {
-            const {index, text} = match;
+        const matchRegExp = /([ａ-ｚＡ-Ｚ]+)/gd;
+        for (const match of text.matchAll(matchRegExp)) {
+            const matchedText = match[1];
+            const [startIndex, endIndex] = match.indices[1];
             report(node, new RuleError("アルファベットは「半角」で表記します。", {
-                index: index,
-                fix: fixer.replaceTextRange([index, index + text.length], toHankaku(text))
+                index: startIndex,
+                fix: fixer.replaceTextRange([startIndex, endIndex], toHankaku(matchedText))
             }));
-        });
+        }
     };
 };
 function reporter(context, options = {}) {
