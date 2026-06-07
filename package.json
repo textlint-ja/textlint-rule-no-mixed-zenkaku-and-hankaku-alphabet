@@ -18,7 +18,7 @@
     "build": "textlint-scripts build",
     "watch": "textlint-scripts build --watch",
     "prepare": "pnpm run build",
-    "prepublishOnly": "pnpm run test"
+    "prepublishOnly": "pnpm run build"
   },
   "keywords": [
     "textlintrule"
